@@ -1,0 +1,56 @@
+:root {
+    --viewport-width: calc(100vw / 100); 
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4
+}
+.grade {
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    gap: 10px;
+}
+.carta {
+    width: 100px;
+    height: 150px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.carta.virada {
+    background-color: #fff;
+    color: #000;
+    cursor: default;
+}
+.imagem{
+    width: 0;
+    height: 0;
+}
+
+.imagem.virada{
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.capa{
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.capa.virada{
+    width: 0;
+    height: 0;
+}

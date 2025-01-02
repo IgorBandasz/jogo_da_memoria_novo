@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Memória</title>
+    <link rel="stylesheet" type="text/css" href="css/nivel.css" />
+</head>
+
+<body>
+    <div id="interface">
+        <header id="cabecalho">
+            <h1>Jogo da Memória</h1>
+        </header>
+        <div id="corpo">
+            <h2>Níveis</h2>
+            
+            <button onclick="jogar(1)">Fácil</button>
+
+            <button onclick="jogar(2)">Moderado</button>
+
+            <button onclick="jogar(3)">Difícil</button>
+            
+            <button onclick="voltar()">Voltar</button>
+
+            <script>
+                function jogar(nivel) {
+                    sessionStorage.setItem('nivel', nivel);
+                    window.location.href = 'jogo.html'; // Redireciona para a próxima página
+                }
+
+                function voltar() {
+                    window.location.href = 'menu.html'; // Redireciona para a próxima página
+                }
+            </script>
+        </div>
+        <footer id="rodape">
+            <p> Copyright &copy; 2024 - by <a href="https://www.linkedin.com/in/igor-bandasz-864410167/"
+                    target="_blank"> Igor Bandasz </a> </p>
+        </footer>
+
+    </div>
+</body>
+
+</html>
