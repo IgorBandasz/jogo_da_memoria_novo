@@ -2,7 +2,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getFirestore, collection, getDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, getDoc, doc, setDoc, query, where, orderBy, limit } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -53,4 +53,55 @@ async function salvarPontuacao(id, nivel, pontos){
         { merge: true });
 }
 
-export {getJogador, salvarPontuacao}
+async function buscarRanking(nivel){
+    let jogadores = [];
+
+    let campo;
+    switch (nivel) {
+        case 1:
+            campo = 'facil'; break;
+        case 2:
+            campo = 'medio'; break;
+        case 3:
+            campo = 'dificil'; break;
+        default:
+            break;
+    }
+
+    const qr = query(collection(firestore, "jogadores"), 
+                     orderBy(campo, "desc"), 
+                     limit(10));
+
+    const querySnapshot = await getDocs(qr);
+    querySnapshot.forEach((doc) => {
+        const dados = doc.data();
+
+        let pontos;
+        switch (nivel) {
+            case 1:
+                pontos = dados.facil; break;
+            case 2:
+                pontos = dados.medio; break;
+            case 3:
+                pontos = dados.dificil; break;
+            default:
+                break;
+        }
+
+        const jogador = {
+            nome: doc.id, 
+            pontos: pontos
+        }
+        
+        jogadores.push(jogador);
+    });
+
+    console.log(jogadores)
+    return jogadores;
+}
+
+export {
+    getJogador, 
+    salvarPontuacao, 
+    buscarRanking
+}
