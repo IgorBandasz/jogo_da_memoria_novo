@@ -3,8 +3,9 @@ import { getJogador, salvarPontuacao } from "./database.js"
 // Elemento principal da grade
 const grade = document.getElementById("grade");
 
-//Pega o nível
+//Pega o nível e o nickname
 const nivel = parseInt(sessionStorage.getItem('nivel'));
+const nickname = sessionStorage.getItem('nickname');
 
 //nomes das imagens
 const cartas = [
@@ -30,7 +31,7 @@ let cartasViradas = [];
 let pares = 0;
 let venceu = false;
 
-const jogador = await getJogador('1');
+//const jogador = await getJogador(nickname);
 
 cartasEmbaralhadas.forEach((item) => {
     //Crio uma div que será a minha carta
@@ -102,7 +103,7 @@ function verificaCarta() {
         if (pares === cartasEmbaralhadas.length / 2) {
             venceu = true;
             
-            salvarPontuacao(jogador.id, nivel, tempoRestante);
+            salvarPontuacao(nickname, nivel, tempoRestante);
 
             alert("Parabéns! Você venceu! Tempo restante: " + tempoRestante);
         }
