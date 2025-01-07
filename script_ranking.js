@@ -41,6 +41,10 @@ for (let index = 1; index <= 3; index++) {
         item.classList.add("item_lista");
         item.textContent = jogador.nome + ' - ' + jogador.pontos;
 
+        if(jogador.nome == nickname){
+            item.classList.add("jogador_logado");
+        }
+
         lista.appendChild(item); 
     });
 
