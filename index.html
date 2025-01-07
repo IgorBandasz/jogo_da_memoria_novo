@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Memória</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/geral.css" />
 </head>
 
 <body>
@@ -13,7 +14,7 @@
         <header id="cabecalho">
             <h1>Jogo da Memória</h1>
         </header>
-        <div id="corpo">
+        <div id="corpo" class="corpo">
             <h2>Bem-Vindo</h2>
             
             <h3>Informe seu nickname</h3>
@@ -21,7 +22,14 @@
             
             <br>
             
-            <button onclick="enviarDados()">Entrar</button>
+            <button class="" onclick="enviarDados()">Entrar</button>
+
+            
+            <button id="login-button"  class="botao" style="width: 100%;">
+                <span class="span2">
+                    Entrar
+                </span>
+            </button>
             
 
             <script>
